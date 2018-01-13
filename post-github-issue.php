@@ -91,7 +91,8 @@ if(isset($_POST["submit"])){
                     <div>
                         <p><input type="text" name="token"></p>
                         <p>認証トークンの発行方法は下記リンク先を参照<br>
-                        権限は「repo」の「public_repo」のチェックのみでいけました。</p>
+                        権限は「repo」の「public_repo」のチェックのみでいけました。
+                        
                         <p><a href="https://qiita.com/kz800/items/497ec70bff3e555dacd0">https://qiita.com/kz800/items/497ec70bff3e555dacd0</a></p>
                     </div>
                 </dd>
