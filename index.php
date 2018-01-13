@@ -33,7 +33,7 @@ $gitRepo = "tenki";
 $titIssue = "問題発見77！";
 $titBody = "こんな問題がありました2！";
 
-$token = "d65d3a87c242b961f81fc868833e543d8a0e8269";
+$token = "19920d0c7eb02709af50dc0cee8a9416b33d5a8b";
 
 $repo = "https://api.github.com/repos/{$gitUser}/{$gitRepo}/issues";
 
