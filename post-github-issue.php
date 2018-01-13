@@ -24,6 +24,32 @@ if(isset($_POST["submit"])){
         "token"=> $token
     );
     
+    function postGitIssue(array $args) {
+
+        extract($args);
+
+        $header = [
+            'Content-Type: application/json',
+            'Authorization: token '.$token
+        ];
+
+        // RETURNTRANSFER exec時に結果出力を回避
+        $options = array(
+            CURLOPT_URL => $repo,
+            CURLOPT_HTTPHEADER => $header,
+            CURLOPT_POSTFIELDS => $issue,
+            CURLOPT_USERAGENT => $ua,
+            CURLOPT_RETURNTRANSFER => true
+        );
+
+        $ch = curl_init();
+
+        curl_setopt_array($ch, $options);
+        $res = curl_exec($ch);
+        curl_close($ch);
+        return $res;
+    }
+    
     $res = postGitIssue($args);
     
     $res = json_decode($res,true);
@@ -111,31 +137,4 @@ if(isset($_POST["submit"])){
 </body>
 </html>
 <?php   
-}
-
-
-function postGitIssue(array $args) {
-    
-    extract($args);
-    
-    $header = [
-        'Content-Type: application/json',
-        'Authorization: token '.$token
-    ];
-    
-    // RETURNTRANSFER exec時に結果出力を回避
-	$options = array(
-        CURLOPT_URL => $repo,
-        CURLOPT_HTTPHEADER => $header,
-        CURLOPT_POSTFIELDS => $issue,
-        CURLOPT_USERAGENT => $ua,
-        CURLOPT_RETURNTRANSFER => true
-	);
-        
-	$ch = curl_init();
-    
-	curl_setopt_array($ch, $options);
-	$res = curl_exec($ch);
-	curl_close($ch);
-	return $res;
 }

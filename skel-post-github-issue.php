@@ -28,11 +28,7 @@ $args = array(
     "token"=> $token
 );
 
-$res = postGitIssue($args);
 
-
-$res = json_decode($res,true);
-  
 function postGitIssue(array $args) {
     
     extract($args);
@@ -58,3 +54,9 @@ function postGitIssue(array $args) {
 	curl_close($ch);
 	return $res;
 }
+
+$res = postGitIssue($args);
+
+
+$res = json_decode($res,true);
+  
