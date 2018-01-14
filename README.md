@@ -15,10 +15,11 @@ Github APIをPHPでちゃんと叩けるよね、という確認用。
 WordPressのform7プラグインのアクションフックを記述したもの。  
 function.phpにこのファイルの記述を書けば、動くはず（local環境だとメールサーバーの設定をしてるかどうかなどで環境依存するかもしれません）
 
-***---注意---***  
-①form7でフォーム作成時にname属性を以下のように指定  
-・不具合件名の name属性を「issuetit」  
-・不具合詳細の name属性を「bodyissue」 
+**---注意---** 
+  
+①form7でフォーム作成時にname属性を以下のように指定    
+・不具合件名の name属性を「issuetit」    
+・不具合詳細の name属性を「bodyissue」  
   
 ![キャプチャ](/images/wp-form.png)  
   
