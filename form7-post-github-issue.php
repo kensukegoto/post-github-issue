@@ -23,11 +23,10 @@ add_action( 'wpcf7_submit', function($contact_form) {
     $titIssue = $data["titissue"]; 
     $bodyIssue = $data["bodyissue"]; 
     
-    $gitUser = "ユーザー名";
-    $gitRepo = "リポジトリ名";
+    $gitUser = "kensukegoto";
+    $gitRepo = "post-test";
     // 認証トークンの発行方法は以下を参照
-    // https://qiita.com/kz800/items/497ec70bff3e555dacd0
-    $token = "認証トークン";
+    $token = "";
     
     $repo = "https://api.github.com/repos/{$gitUser}/{$gitRepo}/issues";
     $issue = json_encode(
