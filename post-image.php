@@ -4,12 +4,15 @@ if(isset($_POST["submit"])){
     
     $gitUser = "kensukegoto";
     $gitRepo = "post-test";
-    $token = "5b971f30522bab58501e711ee2f6682e6597db83";   
+    $token = "9fc24f83efe859688782297941ba41d3d6450a97";   
     $titIssue = isset($_POST["titissue"])?$_POST["titissue"]:""; 
     $bodyIssue = isset($_POST["bodyissue"])?$_POST["bodyissue"]:""; 
     
     $repo = "https://api.github.com/repos/{$gitUser}/{$gitRepo}/";
 
+    // var_dump($_FILES['gazou']);
+    echo count($_FILES);
+    exit();
     
     $gazou = $_FILES['gazou'];
     $data = file_get_contents($gazou['tmp_name']);
@@ -60,8 +63,7 @@ if(isset($_POST["submit"])){
     
     $res = postGitIssue($args);
     
-    
-    
+
     $res = json_decode($res,true);
     echo $args["repo"];
     // echo base64_decode($res["content"]);
@@ -121,6 +123,7 @@ if(isset($_POST["submit"])){
                 <dd>
                     <div>
                         <input type="file" name="gazou">
+                        <input type="file" name="gazou2">
                     </div>
                 </dd>
             </dl>
