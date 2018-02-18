@@ -19,6 +19,7 @@ $global_github_conf = array(
     "imgDir" => "画像ディレクトリ名", // ex )upimage 
 );
 
+
 $global_github_conf["repo"] = "https://api.github.com/repos/{$global_github_conf["gitUser"]}/{$global_github_conf["gitRepo"]}/";
 
 if(isset($_POST["submit"])){
@@ -46,7 +47,7 @@ if(isset($_POST["submit"])){
     
     $answer = array_map("prepare_for_markdown", $_POST);
 
-    
+
     extract($answer,EXTR_SKIP);
 
     $ans_1 = "|トラブルの内容について|\n";
@@ -206,7 +207,7 @@ if(isset($_POST["submit"])){
     }
     
     // タイトルの作成
-    $title_1_3 = str_replace(PHP_EOL, '', $post["ans_1_3"]);
+    $title_1_3 = str_replace(PHP_EOL, '', $_POST["ans_1_3"]);
     $title = $ans_1_1." : ".mb_substr($title_1_3,0,60);
     
     

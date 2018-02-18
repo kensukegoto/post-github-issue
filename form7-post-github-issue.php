@@ -52,8 +52,6 @@ add_action( 'wpcf7_before_send_mail', function($contact_form) {
     
     extract($answer,EXTR_SKIP);
     
-    
-    
     $ans_1 = "|トラブルの内容について|\n";
     $ans_1 .= "|-|\n";
     $ans_1 .= "|**どの機能で、トラブルが起こりましたか？**|\n";
@@ -191,14 +189,13 @@ add_action( 'wpcf7_before_send_mail', function($contact_form) {
     // 画像のマークダウンを追加
     for($i=0,$l=count($img_markdown);$i<$l;$i++){
         
-        global $ans;
         $str = $img_markdown[$i];
         $str = ($i!==($l-1))?$str."\n\n":$str;
         $ans .= $str;
         
     }
     
-
+    
     // タイトルの作成
     $title_1_3 = str_replace(PHP_EOL, '', $post["ans_1_3"]);
     $title = $ans_1_1." : ".mb_substr($title_1_3,0,60);
@@ -211,7 +208,6 @@ add_action( 'wpcf7_before_send_mail', function($contact_form) {
             "body"=>$ans
         ),
         JSON_PRETTY_PRINT);
-    
 
     $issueData = array(
         "repo" => $repo."issues",
@@ -254,7 +250,7 @@ add_action( 'wpcf7_before_send_mail', function($contact_form) {
 
     return;
    
-    // file_get_contentsがもし使えない場合①
+    // file_get_contentsがもし使えない場合
     function get_local_file_contents( $file_path ) {
         
         ob_start();
@@ -265,5 +261,6 @@ add_action( 'wpcf7_before_send_mail', function($contact_form) {
     }
     
 });
+
 
 ?>
