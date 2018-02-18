@@ -1,0 +1,55 @@
+<h3>1. トラブルの内容について</h3>
+
+<h4>1.1 どの機能で、トラブルが起こりましたか？</h4>
+
+[select ans_1_1 id:ans_1_1 class:select-ans "グラフ機能" "グラフ以外の機能(グラフの種類に関係なく発生する)" "その他(下記、自由記述欄でご回答をお願いします)"]
+
+<h4>1.2 トラブルは、どのくらいの確率で発生しますか？</h4>
+
+[select ans_1_2 id:ans_1_2 class:select-ans "5回に4回くらい発生する(80%)" "2回に1回くらい発生する(50%)" "10回に1回くらい発生する(10%)" "その他(下記、自由記述欄でご回答をお願いします)"]
+
+<h4>1.3 トラブルの内容を詳しく教えてください。</h4>
+
+[textarea ans_1_3 id:ans_1_3 class:select-ans placeholder "Excelを立ち上げたところから、どの画面でどの操作をしたなど、操作手順をご説明頂けますと大変助かります"]
+
+<h4>1.4 トラブル発生時のスクリーンショットや、ログがありましたら、添付をお願いします</h4>
+[file ans_file_1 limit:1024kb filetypes:jpg|jpeg|png|gif id:ans_file_1 class:ans_file]
+[file ans_file_2 limit:1024kb filetypes:jpg|jpeg|png|gif id:ans_file_2 class:ans_file]
+[file ans_file_3 limit:1024kb filetypes:jpg|jpeg|png|gif id:ans_file_3 class:ans_file]
+
+
+<h3>2. トラブルのあったPC＋Excel環境について</h3>
+
+<h4>2.1 どのOSを使われていますか？</h4>
+
+[select ans_2_1 id:ans_2_1 class:select-ans "Windows系" "MacOS系" "Linux系" "その他(下記、自由記述欄でご回答をお願いします)" "不明"]
+
+<h4>2.2 OSのバージョンを詳しく教えてください。</h4>
+
+[text ans_2_2 id:ans_2_2 class:select-ans placeholder "(例1)Windows8 64Bit (例2)macOS High Sierra 10.13.1(17B48)"]
+
+<h4>2.3 Excelのバージョンを詳しく教えてください。</h4>
+
+[select ans_2_3 id:ans_2_3 class:select-ans "Excel2013の32Bit版" "Excel2013の64Bit版" "Excel2013だが、32Bitか64Bitか把握していない" "Excel2016の32Bit版" "Excel2016の64Bit版" "Excel2016だが、32Bitか64Bitか把握していない" "ExcelOnline" "Nodeによる開発環境" "その他(下記、自由記述欄でご回答をお願いします)" "不明"]
+
+<h4>2.4 (ExcelOnlineをご利用の場合)どのブラウザを使われていますか？</h4>
+
+[select ans_2_4 id:ans_2_4 class:select-ans "---(ExcelOnline以外)" "Chrome" "Safari" "Edge" "Firefox" "Internet Explorer" "その他(トラブルについての、自由記述欄でご回答をお願いします)" "不明"]
+
+<h4>2.5 (ExcelOnlineをご利用の場合)ブラウザのバージョンを詳しく教えてください。</h4>
+
+[text ans_2_5 id:ans_2_5 class:select-ans placeholder "(例1)Google Chrome バージョン: 63.0.3239.84（Official Build）（64 ビット）"]
+
+<h3>3. 編集されていたExcelファイルについて</h3>
+
+<h4>3.1 Excelで操作されていたファイルは、どこに保存されていましたか？</h4>
+
+[select ans_3_1 id:ans_3_1 class:select-ans "PC(内蔵ディスク)" "PC(USBストレージなどのドライブ)" "PC(DVD-Rなど読み取り専用ディスク)" "GoogleDrive" "OneDrive" "DropBox" "その他クラウドストレージ(自由記述)" "NASやNFSなどのLAN内のストレージ" "新規作成(保存をしていない状態)" "その他(下記、自由記述欄でご回答をお願いします)" "不明"]
+
+<h3>4. その他申し送り事項</h3>
+
+<h4>4.1 その他申し送り事項がございましたら、こちらに記述をお願いします。</h4>
+
+[textarea ans_4_1 id:ans_4_1 class:select-ans placeholder "ございましたら、こちらにお書きください"]
+
+[submit "送信"]
