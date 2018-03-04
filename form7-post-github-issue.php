@@ -43,7 +43,8 @@ add_action( 'wpcf7_before_send_mail', function($contact_form) {
         // メタ文字のエスケープ
         $ans = preg_replace("/([{$gitMarkDown}])/",'\\\$1',$ans);
         // $ans = trim(preg_replace('/\t/g', '', $ans));
-        $ans = str_replace(PHP_EOL, '<br>', $ans);
+        // $ans = str_replace(PHP_EOL, '<br>', $ans);
+        $ans = preg_replace('/(\t|\r\n|\r|\n)/s', '<br>', $ans);
         
         return $ans;
     }
