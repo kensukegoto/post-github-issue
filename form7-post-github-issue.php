@@ -264,4 +264,65 @@ add_action( 'wpcf7_before_send_mail', function($contact_form) {
 });
 
 
+/* バリデーションを追加 */
+add_filter('wpcf7_validate', 'wpcf7_validate_customize', 11, 2);
+ 
+function wpcf7_validate_customize($result,$tags){
+    
+    $submission = WPCF7_Submission::get_instance();
+ 
+    if ( $submission ) {
+        $files = $submission->uploaded_files();
+    }
+    
+    
+    
+    
+    function get_mime($img){
+        
+        $finfo  = finfo_open(FILEINFO_MIME_TYPE);
+          
+        $mime = finfo_file($finfo, $img);
+        
+        finfo_close($finfo);
+
+        
+        return $mime;
+    }
+
+        
+
+    foreach( $tags as $tag ){
+
+        $type = $tag['type'];
+        $name = $tag['name'];
+
+        if($type=="file" && isset($files[$name])){
+            
+            $mimeList = ["image/gif","image/png","image/jpeg","image/jpg"];
+            
+            $mime1 = $_FILES[$name]["type"];
+            
+            if(in_array($mime1,$mimeList)){
+                $mime2 = get_mime($files[$name]);
+                if(!in_array($mime2,$mimeList)){
+                    $result->invalidate( $tag,"ファイル名が不正です");
+                }
+            }
+            
+        }
+
+
+    }
+    
+    if(empty($_POST)){
+        die();
+    }
+    
+ 
+    return $result;
+}
+
+
+
 ?>

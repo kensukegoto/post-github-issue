@@ -22,11 +22,12 @@ $global_github_conf = array(
 
 $global_github_conf["repo"] = "https://api.github.com/repos/{$global_github_conf["gitUser"]}/{$global_github_conf["gitRepo"]}/";
 
-if(isset($_POST["submit"])){
+if(!empty($_POST)){
     
-//    phpinfo();
-//    
-//    exit();
+    echo "hello";
+    var_dump($_POST);
+    
+    exit();
     
 
     // 設定
