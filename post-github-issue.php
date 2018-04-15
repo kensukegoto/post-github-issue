@@ -11,18 +11,22 @@
 */
 
 // 設定
+// 設定
 $global_github_conf = array(
-    "gitUser" => "ユーザー名",
-    "gitRepo" => "リポジトリ名",
-    "token" => "トークン",
-    "branch" => "ブランチ名", // ex) master
-    "imgDir" => "画像ディレクトリ名", // ex )upimage 
+    "gitUser" => "kensukegoto",
+    "gitRepo" => "post-github-issue",
+    "token" => "",
+    "branch" => "master",
+    "imgDir" => "images/fromwp"
 );
-
 
 $global_github_conf["repo"] = "https://api.github.com/repos/{$global_github_conf["gitUser"]}/{$global_github_conf["gitRepo"]}/";
 
 if(isset($_POST["submit"])){
+    
+//    phpinfo();
+//    
+//    exit();
     
 
     // 設定
@@ -37,7 +41,8 @@ if(isset($_POST["submit"])){
         // メタ文字のエスケープ
         $ans = preg_replace("/([{$gitMarkDown}])/",'\\\$1',$ans);
         // $ans = trim(preg_replace('/\t/g', '', $ans));
-        $ans = str_replace(PHP_EOL, '<br>', $ans);
+        // $ans = str_replace(PHP_EOL,'<br>',$ans);
+        $ans = preg_replace('/(\t|\r\n|\r|\n)/s', '<br>', $ans);
         
         
         
@@ -86,12 +91,16 @@ if(isset($_POST["submit"])){
     $ans = $ans_1.$ans_2.$ans_3.$ans_4;
 
     
+    
     // 画像の処理
     $usr_imgs = array_filter($_FILES, function($file){
+        
+        echo $file['error']."&";
         
         return ($file['name']!=="" && $file['size']!==0);
     });
     
+
 
     
     function curl_get_contents( $url, $timeout = 60 ){
@@ -143,8 +152,15 @@ if(isset($_POST["submit"])){
     //　ファイル名の作成
     function make_img_name($img_tmp){
 
-        $mime = mime_content_type($img_tmp);
+        // $mime = mime_content_type($img_tmp);
+        
+        $finfo    = finfo_open(FILEINFO_MIME_TYPE);
+        $mime = finfo_file($finfo, $img_tmp);
+        finfo_close($finfo);
+
         $mime = explode('/',$mime);
+        
+        
 
         list($usec, $sec) = explode(' ', microtime());
         return ($sec + $usec * 1000000).".".$mime[1];
